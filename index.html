@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wallet Connect Test</title>
+  </head>
+  <body style="background:#000; color:#0f0; text-align:center; font-family:sans-serif;">
+    <h1>🔓 Connect Wallet</h1>
+    <p>If this page loads, a wallet popup should trigger.</p>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", async () => {
+        try {
+          if (typeof window.ethereum !== 'undefined') {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            console.log("Connected:", accounts);
+          } else {
+            alert("MetaMask not detected");
+          }
+        } catch (err) {
+          console.error("Wallet connect error:", err);
+        }
+      });
+    </script>
+  </body>
+</html>
+ 
